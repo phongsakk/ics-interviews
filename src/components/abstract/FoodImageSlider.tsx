@@ -1,7 +1,7 @@
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material'
 import { Box } from '@mui/material'
 import React from 'react'
-import ControlButton from './ControlButton'
+import ControlButton from '../styled/ControlButton'
 
 interface IProps {
   images: string[]

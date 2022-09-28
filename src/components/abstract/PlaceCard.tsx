@@ -6,7 +6,7 @@ import type { ZodPlaceJson } from '../../types'
 
 import StyledCard from '../styled/StyledCard'
 import FoodImageSlider from './FoodImageSlider'
-import FoodImgStack from './FoodImgStack'
+import FoodImgStack from '../styled/FoodImgStack'
 import PictureBox from './PictureBox'
 import PlaceAvatar from './PlaceAvatar'
 import Rating from './Rating'

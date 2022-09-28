@@ -3,7 +3,7 @@ import { Box, Divider, IconButton, InputAdornment, MenuItem, Select, SelectChang
 import { Search } from '@mui/icons-material'
 
 import { categories } from '../../utils/const'
-import SearchInput from './SearchInput'
+import SearchInput from '../styled/SearchInput'
 
 interface IProps {
   data: {
