@@ -11,8 +11,6 @@ const PlaceList = () => {
   const [category, setCategory] = React.useState('restaurant')
   const [searchQuery, setSearchQuery] = React.useState('')
 
-
-
   React.useEffect(() => {
     const fetchData = async ({ option }: { option: 'all' }) => {
       const res = await Fetch(category, searchQuery);

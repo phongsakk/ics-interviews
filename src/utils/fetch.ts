@@ -6,14 +6,14 @@ interface IResponse {
   data?: ZodPlaceJson[];
 }
 
-export const Fetch = (
+export const Fetch = async (
   category: string,
   query: string
-): IResponse => {
+): Promise<IResponse> => {
   try {
     const zodData = data.map((item) => ZodPlaceJson.parse(item));
     const chkCategory = zodData.filter((item) => item.categories.includes(category))
-    const chkQuery = chkCategory.filter(item => item.name.includes(query))
+    const chkQuery = chkCategory.filter(item => item.name.toLowerCase().includes(query.toLowerCase()))
     return {
       data: chkQuery,
       status: 200

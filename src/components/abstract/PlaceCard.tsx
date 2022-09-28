@@ -1,14 +1,15 @@
-import { CalendarMonth, Circle } from '@mui/icons-material'
+import { CalendarMonth } from '@mui/icons-material'
 import { Box, CardActionArea, CardContent, CardHeader, Tooltip, Typography }
   from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import type { ZodPlaceJson } from '../../types'
 
-import { colors } from '../../utils/theme'
 import StyledCard from '../styled/StyledCard'
+import FoodImageSlider from './FoodImageSlider'
 import FoodImgStack from './FoodImgStack'
 import PictureBox from './PictureBox'
 import PlaceAvatar from './PlaceAvatar'
+import Rating from './Rating'
 
 interface IProps {
   place: ZodPlaceJson
@@ -39,7 +40,7 @@ const PlaceCard = ({ place }: IProps) => {
             <PlaceAvatar src={place.profile_image_url} />
           }
           title={
-            <Tooltip title='name' disableInteractive>
+            <Tooltip title={place.name} disableInteractive>
               <Box width={292} overflow='hidden' textOverflow='ellipse'>
                 <Typography component='h6' fontWeight='500' noWrap>{place.name}</Typography>
               </Box>
@@ -48,26 +49,29 @@ const PlaceCard = ({ place }: IProps) => {
           subheader={
             <Box display='flex' alignItems='center'>
               <Box display='flex' alignItems='center' sx={{ color: '#000000' }}>
-                <CalendarMonth />
+                <CalendarMonth sx={{ mr: '.5rem' }} />
                 <Typography variant='caption'>
-                  {place.operation_time[operationTimeIndex.open].time_open} AM - {place.operation_time[operationTimeIndex.close].time_close} AM
+                  {place.operation_time[operationTimeIndex.open].time_open} AM - {place.operation_time[operationTimeIndex.close].time_close} PM
                 </Typography>
               </Box>
-              <Box marginLeft='auto' display='flex' alignItems='center' color={colors.default}>
-                <Circle sx={{ fontSize: '.75rem', mr: '.5rem' }} />
-                <Typography>{place.rating}</Typography>
-              </Box>
+
+              <Rating value={place.rating} />
             </Box>
           }
         />
+
         <CardContent>
-          <FoodImgStack>
+          <FoodImgStack display={{ xs: 'none', md: 'flex' }}>
             {place.images.map((img, idx) => (
               <PictureBox src={img} key={idx}></PictureBox>
             ))}
           </FoodImgStack>
         </CardContent>
       </CardActionArea>
+
+      <CardContent>
+        <FoodImageSlider images={place.images} src={`/place/${place.id}`} />
+      </CardContent>
     </StyledCard>
   )
 }

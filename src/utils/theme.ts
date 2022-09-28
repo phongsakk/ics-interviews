@@ -23,6 +23,9 @@ export const theme = createTheme({
     fontFamily: "'Kanit', sans-serif",
     fontSize: 16
   }, palette: {
+    primary: {
+      main: colors.default,
+    },
     error: {
       main: '#F7685B'
     },
