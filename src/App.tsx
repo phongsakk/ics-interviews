@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider }
+  from '@mui/material';
+import { GoogleOAuthProvider } from '@react-oauth/google'
+import { Toaster } from 'react-hot-toast'
+import '@fontsource/kanit'
+
+import { env } from './utils/env';
+import { theme } from './utils/theme';
+import { UserProfileProvider } from './context/useUserProfile';
+
+import Layout from './components/base/Layout';
+import Outlet from './components/base/Outlet';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Toaster />
+      <UserProfileProvider>
+        <GoogleOAuthProvider clientId={env.googleClientId}>
+          <Layout>
+            <Outlet />
+          </Layout>
+        </GoogleOAuthProvider>
+      </UserProfileProvider>
+    </ThemeProvider>
   );
 }
 
