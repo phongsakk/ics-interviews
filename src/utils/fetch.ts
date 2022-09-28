@@ -25,3 +25,11 @@ export const Fetch = async (
     }
   }
 }
+
+export const FetchById = async (id: number): Promise<PlaceInfo> => {
+  setTimeout(() => {
+    
+  }, 200);
+
+  return PlaceInfo.parse(data.find(item => item.id === id))
+}
