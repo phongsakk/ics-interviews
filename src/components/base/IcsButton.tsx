@@ -6,8 +6,8 @@ interface CustomButtonProps extends ButtonProps {
 }
 
 const IcsButton = styled(MuiButton)<CustomButtonProps>(({ disabled, active }) => ({
-  paddingBlock: '8px',
-  paddingInline: '19px',
+  paddingBlock: '4px',
+  paddingInline: '14px',
   borderRadius: '21px',
   color: text.white + ' !important',
   backgroundColor: disabled ? colors.grey : active ? colors.deepBlue : colors.default,
