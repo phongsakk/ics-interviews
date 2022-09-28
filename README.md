@@ -11,8 +11,6 @@ git clone https://github.com/phongsakk/ics-interviews.git
 
 cd ics-interviews
 
-echo 'REACT'
-
 yarn
 
 yarn start
