@@ -5,9 +5,20 @@ import { Search } from '@mui/icons-material'
 import { categories } from '../../utils/const'
 import SearchInput from './SearchInput'
 
-const SearchGroup = () => {
-  const [category, setCategory] = React.useState('restuarant')
-  const [searchQuery, setSearchQuery] = React.useState('')
+interface IProps {
+  data: {
+    category: string,
+    setCategory: React.Dispatch<React.SetStateAction<string>>
+    searchQuery: string,
+    setSearchQuery: React.Dispatch<React.SetStateAction<string>>
+  }
+}
+
+const SearchGroup = ({ data }: IProps) => {
+  const {
+    category, setCategory,
+    searchQuery, setSearchQuery
+  } = data
 
   const handleSelectCategory = (event: SelectChangeEvent<string>) => {
     setCategory(event.target.value)

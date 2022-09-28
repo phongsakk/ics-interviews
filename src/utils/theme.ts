@@ -5,12 +5,13 @@ export const colors = {
   deepBlue: '#0F1E56',
   grey: '#C3BEBB',
   fadeBlue: '#C4D3E9',
+  background: '#F6F7F8'
 }
 
 export const text = {
   white: '#FFFFFF',
   black: '#000000',
-  gray: {
+  grey: {
     '200': '#E0E0E0',
     '400': '#9E9E9E',
     '600': '#605C5C',
@@ -26,7 +27,7 @@ export const theme = createTheme({
       main: '#F7685B'
     },
     background: {
-      default: colors.grey[400],
+      default: colors.background,
       paper: '#FFFFFF'
     }
   }

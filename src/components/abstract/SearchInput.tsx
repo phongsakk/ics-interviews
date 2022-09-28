@@ -4,6 +4,7 @@ import { colors } from '../../utils/theme'
 export const SearchInput = styled(InputBase)<InputBaseProps>({
   '&.MuiInputBase-root': {
     border: `1px solid ${colors.default}`,
+    backgroundColor: '#FFFFFF',
     borderRadius: '50px !important',
     padding: '8px 12px',
     height: '40px',
