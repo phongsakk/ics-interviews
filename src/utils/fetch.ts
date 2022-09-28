@@ -1,9 +1,9 @@
-import { ZodPlaceJson } from '../types';
+import { PlaceInfo } from '../types';
 import data from './example_data.json';
 
 interface IResponse {
   status: number;
-  data?: ZodPlaceJson[];
+  data?: PlaceInfo[];
 }
 
 export const Fetch = async (
@@ -11,7 +11,7 @@ export const Fetch = async (
   query: string
 ): Promise<IResponse> => {
   try {
-    const zodData = data.map((item) => ZodPlaceJson.parse(item));
+    const zodData = data.map((item) => PlaceInfo.parse(item));
     const chkCategory = zodData.filter((item) => item.categories.includes(category))
     const chkQuery = chkCategory.filter(item => item.name.toLowerCase().includes(query.toLowerCase()))
     return {
