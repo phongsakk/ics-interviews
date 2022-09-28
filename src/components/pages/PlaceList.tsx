@@ -1,9 +1,9 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
+
 import { ZodPlaceJson } from '../../types'
 import { Fetch } from '../../utils/fetch'
 import PlaceCard from '../abstract/PlaceCard'
-
 import SearchGroup from '../abstract/SearchGroup'
 
 const PlaceList = () => {
@@ -12,12 +12,12 @@ const PlaceList = () => {
   const [searchQuery, setSearchQuery] = React.useState('')
 
   React.useEffect(() => {
-    const fetchData = async ({ option }: { option: 'all' }) => {
+    const fetchData = async () => {
       const res = await Fetch(category, searchQuery);
       if (res.data) setPlaces(res.data);
     }
 
-    fetchData({ option: 'all' })
+    fetchData()
   }, [category, searchQuery])
   return (
     <Box>
