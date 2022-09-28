@@ -2,7 +2,7 @@ import { CalendarMonth } from '@mui/icons-material'
 import { Box, CardActionArea, CardContent, CardHeader, Tooltip, Typography }
   from '@mui/material'
 import { useNavigate } from 'react-router-dom'
-import type { ZodPlaceJson } from '../../types'
+import type { PlaceInfo } from '../../types'
 
 import StyledCard from '../styled/StyledCard'
 import FoodImageSlider from './FoodImageSlider'
@@ -12,7 +12,7 @@ import PlaceAvatar from './PlaceAvatar'
 import Rating from './Rating'
 
 interface IProps {
-  place: ZodPlaceJson
+  place: PlaceInfo
 }
 
 const PlaceCard = ({ place }: IProps) => {

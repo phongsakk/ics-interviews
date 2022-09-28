@@ -1,13 +1,13 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
 
-import { ZodPlaceJson } from '../../types'
+import type { PlaceInfo } from '../../types'
 import { Fetch } from '../../utils/fetch'
 import PlaceCard from '../abstract/PlaceCard'
 import SearchGroup from '../abstract/SearchGroup'
 
 const PlaceList = () => {
-  const [places, setPlaces] = React.useState<ZodPlaceJson[]>()
+  const [places, setPlaces] = React.useState<PlaceInfo[]>()
   const [category, setCategory] = React.useState('restaurant')
   const [searchQuery, setSearchQuery] = React.useState('')
 

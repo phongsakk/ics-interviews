@@ -28,7 +28,7 @@ export type User = z.TypeOf<typeof User>
 export type Category = 'restaurant' | 'bakery' | 'cafe'
 
 
-export const ZodPlaceJson = z.object({
+export const PlaceInfo = z.object({
   id: z.number(),
   name: z.string(),
   categories: z.string().array(),
@@ -43,4 +43,4 @@ export const ZodPlaceJson = z.object({
   rating: z.number()
 })
 
-export type ZodPlaceJson = z.TypeOf<typeof ZodPlaceJson>
+export type PlaceInfo = z.TypeOf<typeof PlaceInfo>
