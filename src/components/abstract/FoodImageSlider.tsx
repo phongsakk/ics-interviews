@@ -1,6 +1,8 @@
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material'
 import { Box } from '@mui/material'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import ControlButton from '../styled/ControlButton'
 
 interface IProps {
@@ -11,6 +13,7 @@ interface IProps {
 
 const FoodImageSlider = ({ images, src }: IProps) => {
   const [index, setIndex] = React.useState(0)
+  const navigate = useNavigate()
 
   const handlePrevImage = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()
@@ -28,12 +31,21 @@ const FoodImageSlider = ({ images, src }: IProps) => {
         display: { xs: 'block', md: 'none' },
         width: '100%',
         aspectRatio: '1.61/1',
-        backgroundImage: `url('${images[index]}')`,
-        backgroundSize: 'cover',
-        borderRadius: '10px',
+        // backgroundImage: `url('${images[index]}')`,
+        // backgroundSize: 'cover',
+        // borderRadius: '10px',
         position: 'relative',
       }}
     >
+      <Box
+        onClick={() => navigate(src)}
+        sx={{
+          width: '100%',
+          height: '100%',
+          backgroundImage: `url('${images[index]}')`,
+          backgroundSize: 'cover',
+          borderRadius: '10px',
+        }} />
       <ControlButton onClick={handlePrevImage}>
         <KeyboardArrowLeft />
       </ControlButton>
