@@ -31,24 +31,24 @@ const FoodImageSlider = ({ images, src }: IProps) => {
         display: { xs: 'block', md: 'none' },
         width: '100%',
         aspectRatio: '1.61/1',
-        // backgroundImage: `url('${images[index]}')`,
-        // backgroundSize: 'cover',
-        // borderRadius: '10px',
         position: 'relative',
       }}
     >
+      <ControlButton onClick={handlePrevImage}>
+        <KeyboardArrowLeft />
+      </ControlButton>
+
       <Box
         onClick={() => navigate(src)}
         sx={{
+          cursor: 'pointer',
           width: '100%',
           height: '100%',
           backgroundImage: `url('${images[index]}')`,
           backgroundSize: 'cover',
           borderRadius: '10px',
-        }} />
-      <ControlButton onClick={handlePrevImage}>
-        <KeyboardArrowLeft />
-      </ControlButton>
+        }} 
+        />
 
       <ControlButton onClick={handleNextImage}>
         <KeyboardArrowRight />
