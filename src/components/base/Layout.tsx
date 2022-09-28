@@ -30,7 +30,7 @@ const Layout = ({ children }: IProps) => {
           <ProfileAvatar />
         </CustomAppBar>
       </Box>
-      <Box minHeight={'1000vh'}>
+      <Box minHeight={'100vh'}>
         <Toolbar />
         <Container
           sx={{
