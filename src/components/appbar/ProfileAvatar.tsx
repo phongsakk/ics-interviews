@@ -34,7 +34,7 @@ const ProfileAvatar = () => {
       <Box color={text.white} display='flex' flexDirection='row'>
         {isLogin ? (
           <React.Fragment>
-            <IconButton sx={{ display: desktopOnly, width: 52, aspectRatio: 1 }}>
+            <IconButton sx={{ display: desktopOnly, width: 48, height: 48 }}>
               <Badge
                 variant='dot'
                 color='error'

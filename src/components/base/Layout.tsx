@@ -13,24 +13,35 @@ interface IProps {
 
 const CustomAppBar = styled(AppBar)<AppBarProps>(() => ({
   padding: '8px',
+  height: 60,
   display: 'flex',
   backgroundColor: colors.default,
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
-  position: 'relative',
 }))
 
 const Layout = ({ children }: IProps) => {
   return (
     <React.Fragment>
-      <CustomAppBar elevation={0}>
-        <LogoOrSideBar />
-        <ProfileAvatar />
-      </CustomAppBar>
+      <Box position='relative'>
+        <CustomAppBar elevation={0}>
+          <LogoOrSideBar />
+          <ProfileAvatar />
+        </CustomAppBar>
+      </Box>
       <Box minHeight={'1000vh'}>
         <Toolbar />
-        <Container sx={{ p: '9px' }}>
+        <Container
+          sx={{
+            padding: {
+              xs: '18px 9px',
+              md: '18px 38px 18px 132px'
+            },
+            maxWidth: '100vw !important',
+            marginX: 0,
+          }}
+        >
           {children}
         </Container>
       </Box>

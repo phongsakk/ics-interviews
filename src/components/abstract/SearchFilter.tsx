@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PlaceList = () => {
+const SearchFilter = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const PlaceList = () => {
   )
 }
 
-export default PlaceList
+export default SearchFilter
