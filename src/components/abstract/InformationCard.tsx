@@ -14,7 +14,8 @@ const InformationCard = ({ showInmobileView, place }: IProps) => {
   return (
     <Box
       sx={{
-        display: { xs: showInmobileView ? 'block' : 'none', md: 'block' }
+        display: { xs: showInmobileView ? 'block' : 'none', md: 'block' },
+        width: '100%'
       }}
     >
       <DetailCardWrapper>
