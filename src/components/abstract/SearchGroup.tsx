@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Divider, IconButton, InputAdornment, MenuItem, Select, SelectChangeEvent } from '@mui/material'
 import { Search } from '@mui/icons-material'
 
@@ -20,22 +20,31 @@ const SearchGroup = ({ data }: IProps) => {
     searchQuery, setSearchQuery
   } = data
 
+  const [componentCategory, setComponentCategory] = useState(category)
+  const [componentSearchQuery, setComponentSearchQuery] = useState(searchQuery)
+
   const handleSelectCategory = (event: SelectChangeEvent<string>) => {
+    setComponentCategory(event.target.value)
     setCategory(event.target.value)
   }
 
   const handleChangeSearchQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value)
+    setComponentSearchQuery(event.target.value)
+  }
+
+  const returnData = () => {
+    setCategory(componentCategory)
+    setSearchQuery(componentSearchQuery)
   }
 
   const handleSubmit = async (event: React.FormEvent<HTMLElement>) => {
     event.preventDefault()
-    const postData = {
-      category,
-      searchQuery
-    }
+    returnData()
+  }
 
-    console.log(postData)
+  const handleBlurSearchQuery = (event: React.FocusEvent<HTMLInputElement>) => {
+    event.preventDefault()
+    returnData()
   }
 
   return (
@@ -51,7 +60,7 @@ const SearchGroup = ({ data }: IProps) => {
       <Select
         placeholder='Restaurant'
         input={<SearchInput />}
-        value={category}
+        value={componentCategory}
         onChange={handleSelectCategory}
         sx={{
           width: { xs: '100%', md: '180px' },
@@ -91,8 +100,9 @@ const SearchGroup = ({ data }: IProps) => {
           </InputAdornment>
         }
         placeholder='Search name...'
-        value={searchQuery}
+        value={componentSearchQuery}
         onChange={handleChangeSearchQuery}
+        onBlur={handleBlurSearchQuery}
         sx={{ width: { xs: '100%', md: '400px' }, paddingRight: 0 }}
       />
     </Box>

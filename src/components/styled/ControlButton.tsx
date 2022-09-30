@@ -17,7 +17,7 @@ const ControlButton = styled(Box)<BoxProps>({
   '&:hover, &:focus': {
     backgroundColor: colors.fadeBlue,
   },
-  '&:first-child': {
+  '&:first-of-type': {
     left: '4px'
   },
   '&:last-child': {

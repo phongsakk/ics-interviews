@@ -1,24 +1,37 @@
-import { Box, Typography } from '@mui/material'
-import React from 'react'
+import { Box, Grid, Typography } from '@mui/material'
+import React, { useState, useEffect } from 'react'
 
 import type { PlaceInfo } from '../../types'
 import { Fetch } from '../../utils/fetch'
 import PlaceCard from '../abstract/PlaceCard'
 import SearchGroup from '../abstract/SearchGroup'
+import StyledPagination from '../styled/StyledPagination'
 
 const PlaceList = () => {
-  const [places, setPlaces] = React.useState<PlaceInfo[]>()
-  const [category, setCategory] = React.useState('restaurant')
-  const [searchQuery, setSearchQuery] = React.useState('')
+  const [places, setPlaces] = useState<PlaceInfo[]>()
+  const [category, setCategory] = useState('restaurant')
+  const [searchQuery, setSearchQuery] = useState('')
+  const [totalPage, setTotalPage] = useState(1)
+  const [page, setPage] = useState(1)
 
-  React.useEffect(() => {
+  const handlePageChange = (_event: React.ChangeEvent<unknown>, page: number) => {
+    setPage(page)
+  }
+
+  useEffect(() => {
     const fetchData = async () => {
-      const res = await Fetch(category, searchQuery);
-      if (res.data) setPlaces(res.data);
+      const data = await Fetch(category, searchQuery, page);
+
+      console.log(data)
+
+      if (data.data) setPlaces(data.data)
+      if (data.pageCount) setTotalPage(data.pageCount)
+
     }
 
     fetchData()
-  }, [category, searchQuery])
+  }, [category, searchQuery, page])
+
   return (
     <Box>
       <Box
@@ -38,6 +51,18 @@ const PlaceList = () => {
           <PlaceCard key={place.id} place={place} />
         ))}
       </Box>
+
+      {totalPage > 1 && (
+        <Grid container justifyContent='center' alignItems='center'>
+          <StyledPagination
+            color='primary'
+            variant='outlined'
+            count={totalPage}
+            page={page}
+            onChange={handlePageChange}
+          />
+        </Grid>
+      )}
     </Box>
   )
 }

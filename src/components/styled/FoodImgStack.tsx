@@ -3,7 +3,7 @@ import { Stack, StackProps, styled } from '@mui/material'
 const FoodImgStack = styled(Stack)<StackProps>({
   flexDirection: 'row',
   '.MuiBox-root': {
-    "&:first-child": {
+    "&:first-of-type": {
       borderTopLeftRadius: '10px',
       borderBottomLeftRadius: '10px',
     },
