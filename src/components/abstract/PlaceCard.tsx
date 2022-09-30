@@ -18,19 +18,10 @@ interface IProps {
 const PlaceCard = ({ place }: IProps) => {
   const navigate = useNavigate()
 
-  const operat = place.operation_time
-
-  const operateCount = operat.map((value, _index, array) => {
-    return {
-      open: array.reduce((prev, curr) => (value.time_open === curr.time_open) ? prev++ : prev, 0),
-      close: array.reduce((prev, curr) => (value.time_close === curr.time_close) ? prev++ : prev, 0)
-    }
-  })
-
-  const operationTimeIndex = {
-    open: operateCount.map(c => c.open).reduce((prev, curr) => curr > prev ? curr : prev, 0),
-    close: operateCount.map(c => c.close).reduce((prev, curr) => curr > prev ? curr : prev, 0),
-  }
+  const d = new Date()
+  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  const dayParse = daysOfWeek[d.getDay()]
+  const presentDay = place.operation_time.find(item => item.day === dayParse)
 
   return (
     <StyledCard>
@@ -51,7 +42,7 @@ const PlaceCard = ({ place }: IProps) => {
               <Box display='flex' alignItems='center' sx={{ color: '#000000' }}>
                 <CalendarMonth sx={{ mr: '.5rem' }} />
                 <Typography variant='caption'>
-                  {place.operation_time[operationTimeIndex.open].time_open} AM - {place.operation_time[operationTimeIndex.close].time_close} PM
+                  {presentDay && `${presentDay.time_open} - ${presentDay.time_close}`}
                 </Typography>
               </Box>
 
